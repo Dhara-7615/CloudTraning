@@ -1,0 +1,100 @@
+<div class = header>
+ 
+    <nav class="navbar navbar-expand-lg navbar-light ">
+      <a href = "" class= "navbar-brand" style = "color: rgb(4, 55, 66);margin-top: -15px;" ><img src = "assets/images/Fevicon.png" width="35px" height="35px" style = "margin:5px;border: 2px solid whitesmoke;">Meddy For Needy</a>
+      
+      <nav class="navbar navbar-light bg-light">
+          
+        </nav>
+      <button class = "navbar-toggler" data-toggle = "collapse" data-target = "#navbarmenu"><span class = "navbar-toggler-icon" ></span></button>
+      <div class = "collapse navbar-collapse" id = "navbarmenu">
+      <ul class = "navbar-nav">
+          <li class= "nav-item" style = "line-height: 2px;"><a href="" class= "nav-link">Home</a></li>
+          
+          <li class= "nav-item" style = "border-left: 3px solid black;height: 20px; line-height: 2px;"><a routerLink="/Medicine" class= "nav-link">Medicine</a></li>
+         
+          <li class= "nav-item" style = "border-left: 3px solid black;height: 20px; line-height: 2px;"><a  routerLink="/Labtest" class= "nav-link">LabTest</a></li>
+          
+          <li class= "nav-item" style = "border-left: 3px solid black;height: 20px; line-height: 2px;"><a  routerLink="/Devices" class= "nav-link">Devices</a></li>  
+       </ul> 
+      </div>
+      <div class = "icons">
+        <a routerLink = "/Cart" style = "color: rgb(4, 55, 66);"><i class="bi bi-bag-dash-fill">Cart</i></a>
+        <a routerLink = "/Login" style = "color: rgb(4, 55, 66);"><i class="bi bi-box-arrow-in-right"> LogIn</i></a>
+        <a routerLink = "/register" style = "color: rgb(4, 55, 66);"><i class="bi bi-box-arrow-in-right">SignUp</i></a>
+      
+    </div>
+  </nav>
+  <section>
+    <p style = "font-family: 'Dancing Script', cursive; font-size: 40px; margin-left:675px">Cart</p>
+  </section>
+</div>
+
+<ng-container *ngIf = "bagitems.length != 0">
+    <div class="container">
+        <div class="cart-table">
+            <div class="cart-product">
+                <table class= "table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Sr.No</th>
+                            <th>Product Name</th>
+                            <th>Product Image</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor = "let b of bagitems; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{b.productName}}</td>
+                            <td><img src={{b.imagepath}} style = "width:250px;height:250px"></td>
+                            <td>{{b.price}}</td>
+                            <td>{{b.quantity}}</td>
+                            <td>{{b.total}}</td>
+                            <td><button class=" btn btn-link" (click)=DeleteItem(b)><i class="bi bi-trash"></i></button></td>
+                            
+                        </tr>
+                        <tr>
+                            <td colspan = "3"></td>
+                           
+                           
+                            <td><a routerLink = "/Medicine"><button class="btn default" >Shop More</button></a></td>
+                            <td><a routerLink = "/Checkout"><button class="btn default" >CheckOut</button></a></td>
+                            <td style = "margin-left:-150px"><strong>Grand Total:Rs.{{finalTotal}}</strong></td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+    
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+    
+    
+    
+    
+    
+    
+    
+    <ng-container *ngIf = "bagitems.length == 0">
+        <div class="container">
+            <div class="card">
+                <h5 class="card_title">My Cart</h5>
+            </div>
+            <div class="center">
+                <img src = "assets/images/cart.jpg" alt ="">
+                <h4>Your Cart is empty!</h4>
+                <h5>Add item to it Now!</h5>
+                <a routerLink = "/Medicine"><button class="btn default" >ShopNow</button></a>
+            </div>
+        </div>
+    
+</ng-container>
+
+<app-Footer></app-Footer>
+
